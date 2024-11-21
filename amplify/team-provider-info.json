@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-legaldocuments-dev-3d810-authRole",
+      "UnauthRoleArn": "arn:aws:iam::593793045474:role/amplify-legaldocuments-dev-3d810-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::593793045474:role/amplify-legaldocuments-dev-3d810-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-legaldocuments-dev-3d810-deployment",
+      "UnauthRoleName": "amplify-legaldocuments-dev-3d810-unauthRole",
+      "StackName": "amplify-legaldocuments-dev-3d810",
+      "StackId": "arn:aws:cloudformation:us-east-1:593793045474:stack/amplify-legaldocuments-dev-3d810/6aac4eb0-a7d3-11ef-8576-0e6f16ab4627",
+      "AmplifyAppId": "d1zvtnh5dswx27"
+    },
+    "categories": {
+      "auth": {
+        "legaldocumentsf863931a": {}
+      }
+    }
+  }
+}
