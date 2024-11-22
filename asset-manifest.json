@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/legal-frontend/static/css/main.9023985c.css",
+    "main.js": "/legal-frontend/static/js/main.8f961672.js",
+    "index.html": "/legal-frontend/index.html",
+    "main.9023985c.css.map": "/legal-frontend/static/css/main.9023985c.css.map",
+    "main.8f961672.js.map": "/legal-frontend/static/js/main.8f961672.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9023985c.css",
+    "static/js/main.8f961672.js"
+  ]
+}
