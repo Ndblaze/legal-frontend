@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Topbar from "./scenes/global/Topbar";
 import Sidebar from "./scenes/global/Sidebar";
 import Dashboard from "./scenes/dashboard";
@@ -19,49 +19,62 @@ import Calendar from "./scenes/calendar/calendar";
 //auth with amplify cognito
 import { Amplify } from 'aws-amplify';
 
-import { Authenticator, withAuthenticator } from '@aws-amplify/ui-react';
+import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import awsExports from './aws-exports';
 Amplify.configure(awsExports);
 
-// https://legal-doc-domain.auth.us-east-1.amazoncognito.com/oauth2/authorize?response_type=code&client_id=30dg50n6mfsu6btg9h037k53f4&redirect_uri=http://localhost:5002/all_doc
-    
-
-// AZQaxdp/gylnVo9+nA1eptsqDiBqwkhHIuIriLMg (Secret access key)
-// AKIAYUQGS2PRB27VVMUF     ( access key)
 
 function App() {
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
+  const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+  const [hasRedirected, setHasRedirected] = useState(false); // New state to control redirect
+
+
+  useEffect(() => {
+    if (user && !hasRedirected) {
+      setHasRedirected(true); // Prevent future redirects
+      navigate("/all_doc");
+    }
+  }, [user, navigate, hasRedirected]);
 
   return (
     <Authenticator>
-      {({ signOut, user }) => (
-        <ColorModeContext.Provider value={colorMode}>
-          <ThemeProvider theme={theme}> 
-            <CssBaseline />
-            <div className="app">
-              <Sidebar isSidebar={isSidebar} />
-              <main className="content">
-                <Topbar setIsSidebar={setIsSidebar} />
-                <Routes>
-                  <Route path="/dashboard" element={<Dashboard />} />
-                  <Route path="/team" element={<Team />} />
-                  <Route path="/all_doc" element={<Contacts />} />
-                  <Route path="/modify_doc" element={<Invoices />} />
-                  <Route path="/create_doc" element={<Form />} />
-                  <Route path="/bar" element={<Bar />} />
-                  <Route path="/pie" element={<Pie />} />
-                  <Route path="/line" element={<Line />} />
-                  <Route path="/faq" element={<FAQ />} />
-                  <Route path="/calendar" element={<Calendar />} />
-                  <Route path="/geography" element={<Geography />} />
-                </Routes>
-              </main>
-            </div>
-          </ThemeProvider>
-        </ColorModeContext.Provider>
-      )}
+      {({ signOut, user: signedInUser }) => {
+        // Set the signed-in user
+        if (signedInUser && !user) {
+          setUser(signedInUser);
+        }
+
+        return (
+          <ColorModeContext.Provider value={colorMode}>
+            <ThemeProvider theme={theme}>
+              <CssBaseline />
+              <div className="app">
+                <Sidebar isSidebar={isSidebar} />
+                <main className="content">
+                  <Topbar setIsSidebar={setIsSidebar} />
+                  <Routes>
+                    <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="/team" element={<Team />} />
+                    <Route path="/all_doc" element={<Contacts />} />
+                    <Route path="/modify_doc" element={<Invoices />} />
+                    <Route path="/create_doc" element={<Form />} />
+                    <Route path="/bar" element={<Bar />} />
+                    <Route path="/pie" element={<Pie />} />
+                    <Route path="/line" element={<Line />} />
+                    <Route path="/faq" element={<FAQ />} />
+                    <Route path="/calendar" element={<Calendar />} />
+                    <Route path="/geography" element={<Geography />} />
+                  </Routes>
+                </main>
+              </div>
+            </ThemeProvider>
+          </ColorModeContext.Provider>
+        );
+      }}
     </Authenticator>
   );
 }

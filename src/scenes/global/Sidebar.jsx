@@ -41,7 +41,7 @@ const Sidebar = () => {
     console.log("Logout triggered");
     try {
       await signOut(); // Correct usage of signOut
-      window.location.href = "/all_doc"; // Redirect to the login page
+      window.location.href = "/login"; // Redirect to the login page
     } catch (error) {
       console.error("Error signing out:", error);
     }
