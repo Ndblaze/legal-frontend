@@ -139,6 +139,60 @@ This guide explains how to build a React application and deploy it to an AWS S3 
    - Click **Save** to apply the bucket policy.
 
 
+# Testing Your React App After Uploading to S3
+
+Follow these steps to ensure your React app is working correctly after uploading to an AWS S3 bucket.
+
+---
+
+## 1. Access the S3 Static Website URL
+
+1. **Locate the Endpoint**:
+   - Go to the [AWS S3 Console](https://s3.console.aws.amazon.com/s3/).
+   - Navigate to your S3 bucket.
+   - Open the **Properties** tab.
+   - Scroll down to the **Static website hosting** section.
+   - Copy the **Endpoint URL** provided.
+
+2. **Test in a Browser**:
+   - Paste the **Endpoint URL** into your browser.
+   - Verify that your React app loads properly.
+
+---
+
+## 2. Verify Navigation and Routing
+
+1. **Check the Homepage**:
+   - Ensure that the default homepage of your app (e.g., `/`) loads as expected.
+
+2. **Test Other Routes**:
+   - Navigate to other routes in your app (e.g., `/all_doc`, `/modify`) to confirm they work correctly.
+   - Ensure the app handles React Router paths without showing a 404 error.
+
+3. **Handle Refresh Issues**:
+   - If refreshing a route causes a 404 error, verify that the **Error document** is set to `index.html` in the S3 **Static Website Hosting** configuration.
+
+---
+
+## 3. Test API Integration
+
+1. **Test API Requests**:
+   - Verify that all API calls from your React app to the backend services are functioning correctly.
+   - Open the browser’s developer tools (`Ctrl + Shift + I` or `Cmd + Option + I`) and check the **Network** tab for API request/response details.
+
+
+## 4. Cross-Browser Testing
+
+1. Test the app in multiple browsers:
+   - **Chrome**
+   - **Firefox**
+   - **Safari**
+   - **Edge**
+2. Confirm consistent behavior and appearance across all tested browsers.
+
+
+
+
 
 
 
