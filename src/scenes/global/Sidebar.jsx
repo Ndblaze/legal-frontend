@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
@@ -14,7 +15,7 @@ import { signOut } from 'aws-amplify/auth';
 
 const Item = ({ title, to, icon, selected, setSelected, onClick }) => {
   const theme = useTheme();
-  const colors = tokens(theme.palette.mode);
+  const colors = tokens(theme.palette.mode); 
 
   return (
     <MenuItem
@@ -35,13 +36,14 @@ const Sidebar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [selected, setSelected] = useState("Dashboard");
+  const [selected, setSelected] = useState("all_doc");
+  const navigate = useNavigate();
 
   const handleLogout = async () => {
     console.log("Logout triggered");
     try {
       await signOut(); // Correct usage of signOut
-      window.location.href = "/login"; // Redirect to the login page
+      navigate("/");
     } catch (error) {
       console.error("Error signing out:", error);
     }

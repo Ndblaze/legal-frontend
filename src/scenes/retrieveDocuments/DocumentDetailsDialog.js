@@ -7,13 +7,13 @@ const DocumentDetailsDialog = ({ open, onClose, document, onDelete }) => {
 
   // Handle the delete operation
   const handleDelete = () => {
-    const _host = `3.93.236.20:5001/documents`
     //console.log(document._id)
     if (document && document._id) {
       axios
-        .delete(`http://3.93.236.20:5001/documents/${encodeURIComponent(document._id)}`)
+        .delete(`http://3.88.197.168:5001/documents/${encodeURIComponent(document._id)}`)
         .then(() => {
           console.log("Document deleted successfully");
+          alert('Document Deleted successfully')
           onDelete(); // Refresh or update parent state
           onClose(); // Close the dialog
         })

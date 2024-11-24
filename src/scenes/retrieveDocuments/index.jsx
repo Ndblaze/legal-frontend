@@ -20,7 +20,7 @@ const Contacts = () => {
   }, []);
 
   const fetchDocuments = () =>{
-    axios.get('http://3.93.236.20:5001/documents')
+    axios.get('http://3.88.197.168:5001/documents')
       .then((response) => {
         setDocuments(response.data);
         console.log("Data fetched successfully");
@@ -36,7 +36,7 @@ const Contacts = () => {
     console.log('Clicked document ID:', doc_id);
 
     axios
-      .get(`http://3.93.236.20:5001/documents/${encodeURIComponent(doc_id)}`)
+      .get(`http://3.88.197.168:5001/documents/${encodeURIComponent(doc_id)}`)
       .then((response) => {
         setSelectedDocument(response.data); // Set selected document for the dialog
         setOpenDialog(true); // Open the dialog

@@ -11,7 +11,7 @@ const AddDocumentForm = () => {
 
   const handleFormSubmit = async (values, { resetForm }) => {
     try {
-      const response = await axios.post("http://3.93.236.20:5001/documents", values);
+      const response = await axios.post("http://3.88.197.168:5001/documents", values);
       console.log("Document added successfully:", response.data);
       resetForm(); // Reset form after submission
       alert("Document added successfully!");

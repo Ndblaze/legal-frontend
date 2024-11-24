@@ -13,7 +13,7 @@ const UpdateDocumentForm = () => {
     const doc_id = docketNumber;
     console.log('Clicked  ID:', doc_id);
 
-    axios.get(`http://3.93.236.20:5001/documents/${encodeURIComponent(doc_id)}`)
+    axios.get(`http://3.88.197.168:5001/documents/${encodeURIComponent(doc_id)}`)
     .then((response) => {
       setDocumentData(response.data);
     }).catch((error) => {
@@ -24,7 +24,7 @@ const UpdateDocumentForm = () => {
 
   const handleFormSubmit = async (values) => {
     try {
-      const response = await axios.put(`http://3.93.236.20:5001/documents/${values._id}`, values);
+      const response = await axios.put(`http://3.88.197.168:5001/documents/${values._id}`, values);
       console.log("Document updated successfully:", response.data);
       alert("Document updated successfully.");
     } catch (error) {
