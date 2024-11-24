@@ -1,7 +1,29 @@
-# React Admin Dashboard
+# React App Deployment to AWS S3 (AWS Management Console)
 
-Build a COMPLETE React Admin Dashboard App | React, Material UI, Data Grid, Light & Dark Mode
+This guide explains how to build a React application and deploy it to an AWS S3 bucket for hosting using the AWS Management Console.
 
-Video: https://www.youtube.com/watch?v=wYpCWwD1oz0
+---
 
-For all related questions and discussions about this project, check out the discord: https://discord.gg/2FfPeEk2mX
+## Prerequisites
+
+1. **Node.js and npm**:
+   - Ensure Node.js and npm are installed.
+   - Verify versions:
+     ```bash
+     node -v
+     npm -v
+     ```
+
+2. **AWS Account**:
+   - Create an AWS account at [aws.amazon.com](https://aws.amazon.com).
+
+---
+
+## Steps to Deploy React App
+
+### 1. Build the React App
+1. Open your terminal and navigate to your React project directory.
+2. Run the following command to create a production build:
+   ```bash
+   npm run build
+
